@@ -1,0 +1,41 @@
+{
+  "name": "broland-api",
+  "version": "0.1.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch src src/*.js",
+    "start": "node src/app.js",
+    "lint": "eslint --fix . && echo 'Lint complete.'",
+    "format": "prettier --write src/**"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrFuri/broland-api.git"
+  },
+  "author": "furi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrFuri/broland-api/issues"
+  },
+  "homepage": "https://github.com/MrFuri/broland-api#readme",
+  "dependencies": {
+    "aws-sdk": "^2.518.0",
+    "body-parser": "^1.19.0",
+    "bottlejs": "^1.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
+  }
+}
