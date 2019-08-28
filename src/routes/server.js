@@ -1,6 +1,6 @@
-const { Router } = require('express');
-const AWS_EC2 = require('aws-sdk/clients/ec2');
-const { ec2Instance } = require('../config');
+import { Router } from 'express';
+import AWS_EC2 from 'aws-sdk/clients/ec2';
+import { ec2Instance } from '../config';
 
 const ec2 = new AWS_EC2({ region: 'us-east-2' });
 const router = Router();
@@ -15,4 +15,12 @@ router.route('/status').get((req, res, next) => {
   );
 });
 
-module.exports = router;
+router.route('/start').post((req, res, next) => {
+  // TODO: continuar aqui
+  // ec2.startInstances({ InstanceIds: [ec2Instance] }, (err, data) => {
+  //   if (err) next(err);
+  //   else res.send({ status: data.InstanceStatuses[0].InstanceState.Name });
+  // });
+});
+
+export default router;

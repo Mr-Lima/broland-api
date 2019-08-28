@@ -1,8 +1,8 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const routes = require('./routes');
-const config = require('./config');
+import express from 'express';
+import cors from 'cors';
+import { json } from 'body-parser';
+import routes from './routes';
+import { port } from './config';
 
 async function startServer() {
   const app = express();
@@ -24,7 +24,7 @@ async function startServer() {
   app.use(cors());
 
   // Middleware that transforms the raw string of req.body into json
-  app.use(bodyParser.json());
+  app.use(json());
 
   // Load API routes
   app.use(routes);
@@ -59,7 +59,7 @@ async function startServer() {
     });
   });
 
-  app.listen(config.port, err => {
+  app.listen(port, err => {
     if (err) {
       // eslint-disable-next-line no-console
       console.error(err);
@@ -68,7 +68,7 @@ async function startServer() {
     // eslint-disable-next-line no-console
     console.log(
       `################################################
-      🛡️  Server listening on port: ${config.port} 🛡️ 
+      🛡️  Server listening on port: ${port} 🛡️ 
       ################################################`,
     );
   });

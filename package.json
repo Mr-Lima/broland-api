@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --watch src src/*.js",
-    "start": "node src/app.js",
+    "dev": "nodemon --watch src src/*.js --exec 'npm run start'",
+    "start": "babel-node src/app.js",
     "lint": "eslint --fix . && echo 'Lint complete.'",
     "format": "prettier --write src/**"
   },
@@ -27,9 +27,14 @@
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "express-validator": "^6.1.1",
+    "http-errors": "^1.7.3",
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.0.0",
