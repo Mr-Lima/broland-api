@@ -2,11 +2,11 @@
   "name": "broland-api",
   "version": "0.1.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch src src/*.js --exec 'npm run start'",
-    "start": "babel-node src/app.js",
+    "start": "babel-node src/index.js",
     "lint": "eslint --fix . && echo 'Lint complete.'",
     "format": "prettier --write src/**"
   },
