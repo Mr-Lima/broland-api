@@ -5,6 +5,7 @@ import { createLogger, format, transports } from 'winston';
 import { env } from './globals';
 
 const logDir = 'logs';
+const consoleLevel = env.NODE_ENV === 'development' ? 'debug' : 'info';
 
 // Create the log directory if it does not exist
 if (!existsSync(logDir)) {
@@ -20,7 +21,7 @@ export default createLogger({
     }),
     format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`),
   ),
-  level: env.NODE_ENV === 'development' ? 'debug' : 'info',
+  level: consoleLevel,
   transports: [
     new transports.Console({
       format: format.combine(
@@ -29,7 +30,7 @@ export default createLogger({
           info => `${info.timestamp} ${info.level}: ${info.message}`,
         ),
       ),
-      level: 'info',
+      level: consoleLevel,
     }),
     new transports.File({ filename, level: 'error' }),
   ],

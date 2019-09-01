@@ -25,9 +25,9 @@ export function registerErrorHandler(router) {
   router.use((err, req, res, next) => {
     handleError(err);
 
-    return res.status(500).json({
+    return res.status(err.statusCode || 500).json({
       error: err.message || err,
-      status: 500,
+      status: err.statusCode || 500,
     });
   });
 }
