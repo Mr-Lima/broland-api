@@ -7,6 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch src src/*.js --exec 'npm run start'",
     "start": "babel-node src/index.js",
+    "clean": "rm -rf dist && mkdir dist",
+    "build": "babel src -d dist",
     "lint": "eslint --fix . && echo 'Lint complete.'",
     "format": "prettier --write src/**"
   },
@@ -32,6 +34,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
