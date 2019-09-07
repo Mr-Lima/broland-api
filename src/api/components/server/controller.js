@@ -23,7 +23,7 @@ export function validate(method) {
 export async function status(req, res, next) {
   try {
     const result = await getInstanceStatus(env.EC2_INSTANCE);
-    res.send({ status: result });
+    res.send({ state: result });
   } catch (err) {
     next(err);
   }
@@ -36,7 +36,7 @@ export async function start(req, res, next) {
   else {
     try {
       const result = await startInstance(env.EC2_INSTANCE);
-      res.send({ status: result });
+      res.send({ state: result });
     } catch (err) {
       next(err);
     }
@@ -50,7 +50,7 @@ export async function stop(req, res, next) {
   else {
     try {
       const result = await stopInstance(env.EC2_INSTANCE);
-      res.send({ status: result });
+      res.send({ state: result });
     } catch (err) {
       next(err);
     }
