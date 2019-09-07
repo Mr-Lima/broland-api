@@ -1,7 +1,5 @@
 import { Router } from 'express';
-import { env } from '../../../config/globals';
-import { getInstanceStatus } from '../../../services/aws';
-import { validate, start, stop } from './controller';
+import { validate, start, stop, status } from './controller';
 
 /**
  *
@@ -12,15 +10,8 @@ import { validate, start, stop } from './controller';
  */
 export default function registerServerRoutes(router, prefix) {
   const serverRouter = new Router();
-  serverRouter.get('/status', async (req, res, next) => {
-    try {
-      const result = await getInstanceStatus(env.EC2_INSTANCE);
-      res.send({ status: result });
-    } catch (err) {
-      next(err);
-    }
-  });
 
+  serverRouter.get('/status', status);
   serverRouter.post('/start', validate('toggleServer'), start);
   serverRouter.post('/stop', validate('toggleServer'), stop);
 

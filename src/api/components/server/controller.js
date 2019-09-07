@@ -1,6 +1,10 @@
 import { body } from 'express-validator';
 import { Unauthorized } from 'http-errors';
-import { startInstance, stopInstance } from '../../../services/aws';
+import {
+  startInstance,
+  stopInstance,
+  getInstanceStatus,
+} from '../../../services/aws';
 import { env } from '../../../config/globals';
 import { validateRequest } from '../../../services/helpers/utility';
 
@@ -13,6 +17,15 @@ export function validate(method) {
       ];
     default:
       return [];
+  }
+}
+
+export async function status(req, res, next) {
+  try {
+    const result = await getInstanceStatus(env.EC2_INSTANCE);
+    res.send({ status: result });
+  } catch (err) {
+    next(err);
   }
 }
 
