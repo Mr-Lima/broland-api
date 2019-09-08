@@ -1,7 +1,7 @@
 import AWS_EC2 from 'aws-sdk/clients/ec2';
 import { InternalServerError } from 'http-errors';
 
-const ec2 = new AWS_EC2({ region: 'sa-east-1a' });
+const ec2 = new AWS_EC2({ region: 'sa-east-1' });
 /**
  *
  *
