@@ -31,7 +31,7 @@ export async function status(req, res, next) {
 
 export async function toggle(req, res, next) {
   validateRequest(req, next);
-  if (req.body.user !== 'admin' || req.body.password !== 'crespo')
+  if (req.body.user !== 'admin' || req.body.password !== 'simple-hardcoded-password')
     next(new Unauthorized('Invalid credentials'));
   else {
     try {
